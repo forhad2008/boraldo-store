@@ -937,8 +937,7 @@
             </div>
 
             <div class="nav-icons">
-                <button class="cart-icon" id="cart-btn" onclick="openCart()">Menu / Bag (<span
-                        id="cartCountHeader">0</span>)</button>
+                <button class="cart-icon" id="cart-btn" onclick="openCart()">Menu</button>
             </div>
         </div>
     </header>
@@ -1010,13 +1009,6 @@
                 <li><a href="shoes2.png">Shoes Collection</a></li>
 
                 <li><a href="winter.png">Winter Fashion</a></li>
-
-               <li>
-                    <button class="modal-cart-link-btn" onclick="openCartModal()">
-                        <span>Shopping Bag</span>
-                        <span class="modal-cart-count-badge" id="drawerCartCount">0</span>
-                    </button>
-                </li>
             </ul>
         </nav>
     </div>
@@ -1066,9 +1058,9 @@
             { id: "prod-03", title: "Streetwear Tee with Classic design", price: 289, badge: "Classic", image: "tee2.png", link: "page2/6.html" },
             { id: "prod-04", title: "Streetwear Tee with Creative design", price: 409.99, badge: "Premium", image: "tee8.png", link: "page8/2.html" },
             // New luxury drop additions
-            { id: "prod-05", title: "Boraldo Tee Model-16(The Water Motivation)", price: 400, badge: "Limited Drop", image: "16.png", link: "#" },
-            { id: "prod-06", title: "Boraldo Tee Model-74(Creative Art V-1)", price: 399.99, badge: "Exclusive", image: "tee7.png", link: "#" },
-            { id: "prod-07", title: "Boraldo Tee Model-58(Professional)", price: 400, badge: "Professional", image: "tee5.jpg", link: "#" }
+            { id: "prod-05", title: "Boraldo Tee Model-16(The Water Motivation)", price: 400, badge: "Limited Drop", image: "16.png", link: "" },
+            { id: "prod-06", title: "Boraldo Tee Model-74(Creative Art V-1)", price: 399.99, badge: "Exclusive", image: "tee7.png", link: "" },
+            { id: "prod-07", title: "Boraldo Tee Model-58(Professional)", price: 400, badge: "Professional", image: "tee5.jpg", link: "" }
         ];
 
         let cart = JSON.parse(localStorage.getItem('threadlab_cart')) || [];
