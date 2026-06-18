@@ -821,6 +821,50 @@
             transform: translateY(30px);
         }
 
+        /* Submenu Hidden State */
+.drawer-menu .submenu {
+    max-height: 0;
+    overflow: hidden;
+    list-style: none;
+    padding-left: 20px;
+    transition: max-height 0.4s ease-out, opacity 0.3s ease;
+    opacity: 0;
+}
+
+/* Submenu Open State */
+.drawer-menu .submenu.open {
+    max-height: 200px; /* Adjust based on content size */
+    opacity: 1;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Styling the Explore Collection Button */
+.submenu-toggle-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    text-align: left;
+    width: 100%;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Rotate indicator arrow when open */
+.submenu-toggle-btn .arrow {
+    font-size: 0.6em;
+    transition: transform 0.3s ease;
+}
+
+.submenu-toggle-btn.active .arrow {
+    transform: rotate(180deg);
+}
         /* --- RESPONSIVE MEDIA QUERIES --- */
         @media (max-width: 1024px) {
             .product-grid {
@@ -1001,21 +1045,30 @@
             <button class="close-cart" onclick="closeCart()">✕</button>
         </div>
 
+
+
         <nav class="drawer-menu">
-            <ul>
-                <li><a href="index.html" onclick="closeCart()">Home</a></li>
-                <li><a href="about.html" onclick="closeCart()">About Us</a></li>
-                <li><a href="shop.webp" onclick="closeCart()">Explore Collection</a></li>
-                <li><a href="shoes2.png">Shoes Collection</a></li>
+            <ul class="drawer-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="about.html" onclick="closeCart()">Our Story</a></li>
 
-                <li><a href="winter.png">Winter Fashion</a></li>
-                                <li><a href="https://forhad2008.github.io/Boraldo/page1.html">Visit Product</a></li>
+                <li class="has-submenu">
+                    <button class="submenu-toggle-btn" onclick="toggleSubmenu(event)">
+                        Explore Collection <span class="arrow">▼</span>
+                    </button>
+                    <ul class="submenu" id="explore-submenu">
+                        <li><a href="shop.webp">All Collection</a></li>
+                        <li><a href="bag.png">Bag Collection</a></li>
 
-                <br>                <br>                <br>
-                        <li><a href="https://www.facebook.com/profile.php?id=61580779565120" onclick="closeCart()">The Founder</a></li>
-                        <li><a href="https://forhad2008.github.io/portfolio/" onclick="closeCart()">About The Founder</a></li>
-
-
+                        <li><a href="shoes2.png">Shoes Collection</a></li>
+                        <li><a href="winter.png">Winter Fashion</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://forhad2008.github.io/Boraldo/page1.html">Visit Product</a></li>
+                
+                <br> <br> <br>
+                <li><a href="https://www.facebook.com/profile.php?id=61580779565120" onclick="closeCart()">The Founder</a></li>
+                <li><a href="https://forhad2008.github.io/portfolio/" onclick="closeCart()">About The Founder</a></li>
             </ul>
         </nav>
     </div>
@@ -1035,309 +1088,4 @@
                     <span id="cartTotalPrice">$0.00</span>
                 </div>
 
-                <form class="checkout-form" onsubmit="event.preventDefault(); alert('Order Placed Successfully!');">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="text" placeholder="Card Details" required>
-                    <button class="checkout-btn" type="submit">Complete Order</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <section class="hero1">
-        <div class="hero-bg-wrapper" id="hero1-img-wrapper">
-            <div class="hero1-bg" id="hero1-img"></div>
-        </div>
-        <div class="hero-content">
-            <div class="reveal-wrapper">
-                <h1 id="hero1-title">The Popular Drop</h1>
-            </div>
-            <p id="hero1-subtitle">Premium aesthetics designed for timeless modern street-fashion.</p>
-            <a href="shop.webp" class="cta-btn" id="hero1-btn">Explore Store</a>
-        </div>
-    </section>
-
-    <script>
-        const products = [
-            { id: "prod-01", title: "Streetwear Tee with Abstract design", price: 299.00, badge: "Best Selling", image: "tee.jpg", link: "tee.jpg" },
-            { id: "prod-02", title: "Streetwear Tee with Cool design", price: 399.99, badge: "Stylish", image: "tee.png", link: "tee.png" },
-            { id: "prod-03", title: "Streetwear Tee with Classic design", price: 289, badge: "Classic", image: "tee2.png", link: "tee2.png" },
-            { id: "prod-04", title: "Streetwear Tee with Creative design", price: 409.99, badge: "Premium", image: "tee8.png", link: "tee8.png" },
-            // New luxury drop additions
-            { id: "prod-05", title: "Boraldo Tee Model-16(The Water Motivation)", price: 400, badge: "Limited Drop", image: "16.png", link: "16.png" },
-            { id: "prod-06", title: "Boraldo Tee Model-74(Creative Art V-1)", price: 399.99, badge: "Exclusive", image: "tee7.png", link: "tee7.png" },
-            { id: "prod-07", title: "Boraldo Tee Model-58(Professional)", price: 400, badge: "Professional", image: "tee5.jpg", link: "tee5.jpg" }
-        ];
-
-        let cart = JSON.parse(localStorage.getItem('threadlab_cart')) || [];
-
-        // Dynamic view logic depending on the group target parameter
-        function renderProductGrid(items, isLuxuryStyle = false) {
-            if (!isLuxuryStyle) {
-                // Return Standard Cards Grid Style layout markup 
-                return items.map(p => `
-                    <div class="product-card">
-                        <div class="image-container">
-                            ${p.badge ? `<div class="badge">${p.badge}</div>` : ''}
-                            <a href="${p.link}"><img src="${p.image}" alt="${p.title}" class="product-image"></a>
-                        </div>
-                        <div class="product-info">
-                            <span class="product-title"><a href="${p.link}">${p.title}</a></span>
-                            <span class="product-price">$${p.price.toFixed(2)}</span>
-                        </div>
-                    </div>
-                `).join('');
-            } else {
-                // Return Alternating Premium Editorial Layout markup
-                return items.map((p, index) => `
-                    <div class="luxury-editorial-card ${index % 2 === 1 ? 'reverse' : ''}">
-                        <div class="lux-card-image-wrapper">
-                            ${p.badge ? `<div class="badge">${p.badge}</div>` : ''}
-                            <a href="${p.link}"><img src="${p.image}" alt="${p.title}"></a>
-                        </div>
-                        <div class="lux-card-details">
-                            <span class="lux-card-meta">Atelier Drop Exclusive</span>
-                            <h3 class="lux-card-title"><a href="${p.link}">${p.title}</a></h3>
-                            <p class="lux-card-price">$${p.price.toFixed(2)}</p>
-                            <button class="lux-add-btn" onclick="addToCart('${p.id}')">Acquire Silhouette</button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
-
-        function initProducts() {
-            const grid1 = document.getElementById('product-grid');
-            const grid2 = document.getElementById('product-grid-extended');
-
-            if (grid1) {
-                grid1.innerHTML = renderProductGrid(products.slice(0, 4), false);
-            }
-            if (grid2) {
-                grid2.innerHTML = renderProductGrid(products.slice(4), true);
-            }
-        }
-
-        function addToCart(productId) {
-            const targetProduct = products.find(p => p.id === productId);
-            if (targetProduct) {
-                cart.push({
-                    id: targetProduct.id,
-                    title: targetProduct.title,
-                    price: targetProduct.price,
-                    size: 'M',
-                    color: 'Default'
-                });
-                localStorage.setItem('threadlab_cart', JSON.stringify(cart));
-                updateCartUI();
-                openCartModal();
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            initProducts();
-            updateCartUI();
-        });
-
-        function openCartModal() {
-            closeCart();
-            document.getElementById('cartModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeCartModal() {
-            document.getElementById('cartModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function closeCartModalOutside(event) {
-            if (event.target.id === 'cartModal') {
-                closeCartModal();
-            }
-        }
-
-        function updateCartUI() {
-            document.getElementById('cartCountHeader').innerText = cart.length;
-            const drawerCount = document.getElementById('drawerCartCount');
-            if (drawerCount) drawerCount.innerText = cart.length;
-
-            const listContainer = document.getElementById('cartItemList');
-            const totalContainer = document.getElementById('cartTotalPrice');
-
-            if (!listContainer) return;
-
-            listContainer.innerHTML = "";
-            let totalPrice = 0;
-
-            if (cart.length === 0) {
-                listContainer.innerHTML = "<p style='color: #888; text-align: center; padding: 20px 0;'>Your cart is currently empty.</p>";
-            } else {
-                cart.forEach((item, index) => {
-                    totalPrice += item.price;
-                    listContainer.innerHTML += `
-                        <div class="cart-item">
-                            <div class="cart-item-info">
-                                <strong>${item.name || item.title}</strong> <br>
-                                <small>Size: ${item.size || 'M'} | Color: ${item.color || 'Default'}</small>
-                            </div>
-                            <div class="cart-item-actions">
-                                <span>$${item.price.toFixed(2)}</span>
-                                <button class="remove-item-btn" onclick="removeFromCart(${index})">&times;</button>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-            totalContainer.innerText = `$${totalPrice.toFixed(2)}`;
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            localStorage.setItem('threadlab_cart', JSON.stringify(cart));
-            updateCartUI();
-        }
-
-        function openCart() {
-            document.getElementById('cart-overlay').style.display = 'block';
-            gsap.to("#cart-overlay", { opacity: 1, duration: 0.4 });
-            gsap.to("#cart-panel", { x: '0%', duration: 0.6, ease: "power4.out" });
-            gsap.from(".drawer-menu li", { x: 30, opacity: 0, stagger: 0.08, duration: 0.6, ease: "power3.out", delay: 0.2 });
-        }
-
-        function closeCart() {
-            gsap.to("#cart-overlay", {
-                opacity: 0, duration: 0.4, onComplete: () => {
-                    document.getElementById('cart-overlay').style.display = 'none';
-                }
-            });
-            gsap.to("#cart-panel", { x: '100%', duration: 0.6, ease: "power4.inOut" });
-        }
-
-        // --- GSAP ANIMATIONS ---
-        gsap.registerPlugin(ScrollTrigger);
-
-        window.addEventListener('DOMContentLoaded', () => {
-            // Main Entrance Landing Animation
-            const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-            tl.to("#hero-img", { scale: 1, duration: 2 })
-                .from("header", { y: -100, opacity: 0, duration: 1.2 }, "-=1.5")
-                .from("#hero-title", { yPercent: 100, duration: 1.4 }, "-=1")
-                .to("#hero-subtitle", { opacity: 1, y: 0, duration: 1 }, "-=0.8")
-                .to("#hero-btn", { opacity: 1, y: 0, duration: 1 }, "-=0.8");
-
-            // Standard Collection Row entry stagger animation
-            gsap.to("#product-grid .product-card", {
-                opacity: 1,
-                y: 0,
-                duration: 1.2,
-                stagger: 0.1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: "#product-grid",
-                    start: "top 85%",
-                    toggleActions: "play none none none"
-                }
-            });
-
-            // Luxury Custom Layout collection entry trigger block
-            ScrollTrigger.batch(".luxury-editorial-card", {
-                start: "top 85%",
-                onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, duration: 1.2, stagger: 0.2, ease: "power3.out" })
-            });
-
-            // --- LUXURY SECTION INTERACTIVE ANIMATIONS ---
-            gsap.to("#luxury-fluid-bg", {
-                yPercent: 15,
-                scrollTrigger: {
-                    trigger: ".luxury-editorial-section",
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true
-                }
-            });
-
-            gsap.to("#lux-src-1", {
-                scale: 1,
-                yPercent: -8,
-                scrollTrigger: {
-                    trigger: ".luxury-editorial-section",
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true
-                }
-            });
-
-            gsap.to("#lux-src-2", {
-                scale: 1,
-                yPercent: 8,
-                scrollTrigger: {
-                    trigger: ".luxury-editorial-section",
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true
-                }
-            });
-
-            gsap.from(["#lux-meta", "#lux-title", "#lux-p", "#lux-btn"], {
-                opacity: 0,
-                y: 50,
-                duration: 1.2,
-                stagger: 0.15,
-                ease: "power4.out",
-                scrollTrigger: {
-                    trigger: ".luxury-editorial-section",
-                    start: "top 65%",
-                    toggleActions: "play none none none"
-                }
-            });
-
-            // --- BOTTOM HERO 1 REVEAL ANIMATIONS ---
-            gsap.to("#hero1-img-wrapper", {
-                opacity: 1,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: ".hero1",
-                    start: "top 75%",
-                    toggleActions: "play none none none"
-                }
-            });
-
-            gsap.to("#hero1-img", {
-                scale: 1,
-                scrollTrigger: {
-                    trigger: ".hero1",
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true
-                }
-            });
-
-            gsap.from("#hero1-title", {
-                yPercent: 100,
-                duration: 1.4,
-                ease: "power4.out",
-                scrollTrigger: {
-                    trigger: ".hero1",
-                    start: "top 60%",
-                    toggleActions: "play none none none"
-                }
-            });
-
-            gsap.to(["#hero1-subtitle", "#hero1-btn"], {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                stagger: 0.2,
-                ease: "power4.out",
-                scrollTrigger: {
-                    trigger: ".hero1",
-                    start: "top 55%",
-                    toggleActions: "play none none none"
-                }
-            });
-        });
-    </script>
-</body>
-
-</html>
+                <form class="chec
