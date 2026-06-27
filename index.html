@@ -166,13 +166,13 @@
             letter-spacing: 0.08em;
             margin-bottom: 75px;
             border: #031f9e;
-                        line-height: 1.1;
-                        color: white;
-    text-shadow:
-        -1px -1px 0 #1b1718,
-         1px -1px 0 #1b1718,
-        -1px  1px 0 #1b1718,
-         1px  1px 0 #1b1718;
+            line-height: 1.1;
+            color: white;
+            text-shadow:
+                -1px -1px 0 #1b1718,
+                1px -1px 0 #1b1718,
+                -1px 1px 0 #1b1718,
+                1px 1px 0 #1b1718;
         }
 
         .hero p {
@@ -738,31 +738,9 @@
             cursor: pointer;
         }
 
-        .modal-cart-link-btn {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-transform: uppercase;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: 1px dashed rgba(0, 0, 0, 0.3);
-            padding: 12px;
-            margin-top: 10px;
-            background: rgba(0, 0, 0, 0.04);
-            cursor: pointer;
-            width: 100%;
-            color: var(--text-color);
-        }
-
-        .modal-cart-count-badge {
-            background-color: var(--text-color);
-            color: var(--white);
-            font-size: 0.75rem;
-            padding: 2px 10px;
-            font-weight: 600;
-        }
-
-        .hero1 {
+        /* --- HERO 1 & HERO 2 UNIFIED DESIGN SYSTEM --- */
+        .hero1,
+        .hero2 {
             margin-top: 10px;
             height: 100vh;
             display: flex;
@@ -773,7 +751,8 @@
             padding: 0 40px;
         }
 
-        .hero1-bg-wrapper {
+        .hero1-bg-wrapper,
+        .hero2-bg-wrapper {
             position: absolute;
             top: 0;
             left: 0;
@@ -790,81 +769,157 @@
             transform: scale(1.3);
         }
 
-        .hero1-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: var(--white);
-            max-width: 800px;
+        .hero2-bg {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35)), url('14.png') center/cover no-repeat;
+            transform: scale(1.3);
         }
 
-        .hero1 h1 {
+        .hero1 h1,
+        .hero2 h1 {
             font-size: 4rem;
             font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             margin-bottom: 15px;
             line-height: 1.1;
+            color: var(--white);
         }
 
-        .hero1 p {
+        .hero1 p,
+        .hero2 p {
             font-size: 1.05rem;
             letter-spacing: 0.08em;
             margin-bottom: 35px;
             font-weight: 300;
             opacity: 0;
             transform: translateY(30px);
+            color: var(--white);
         }
 
-        #hero1-btn {
+        #hero1-btn,
+        #hero2-btn {
             opacity: 0;
             transform: translateY(30px);
         }
 
         /* Submenu Hidden State */
-.drawer-menu .submenu {
-    max-height: 0;
-    overflow: hidden;
-    list-style: none;
-    padding-left: 20px;
-    transition: max-height 0.4s ease-out, opacity 0.3s ease;
-    opacity: 0;
-}
+        .drawer-menu .submenu {
+            max-height: 0;
+            overflow: hidden;
+            list-style: none;
+            padding-left: 20px;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease;
+            opacity: 0;
+        }
 
-/* Submenu Open State */
-.drawer-menu .submenu.open {
-    max-height: 200px; /* Adjust based on content size */
-    opacity: 1;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+        /* Submenu Open State */
+        .drawer-menu .submenu.open {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
 
-/* Styling the Explore Collection Button */
-.submenu-toggle-btn {
-    background: none;
-    border: none;
-    color: inherit;
-    font-size: inherit;
-    font-family: inherit;
-    font-weight: inherit;
-    text-align: left;
-    width: 100%;
-    padding: 0;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        /* Styling the Explore Collection Button */
+        .submenu-toggle-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            text-align: left;
+            width: 100%;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* Rotate indicator arrow when open */
-.submenu-toggle-btn .arrow {
-    font-size: 0.6em;
-    transition: transform 0.3s ease;
-}
+        /* Rotate indicator arrow when open */
+        .submenu-toggle-btn .arrow {
+            font-size: 0.6em;
+            transition: transform 0.3s ease;
+        }
 
-.submenu-toggle-btn.active .arrow {
-    transform: rotate(180deg);
-}
+        .submenu-toggle-btn.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        /* --- MARQUEE RUNNING STRIP PANELS --- */
+        .watch-marquee-section {
+            width: 100%;
+            overflow: hidden;
+            background: #0d0d0d;
+            padding: 60px 0;
+        }
+
+        .marquee-wrapper {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .marquee-track {
+            display: flex;
+            white-space: nowrap;
+            width: max-content;
+        }
+
+        .marquee-item {
+            width: 300px;
+            margin: 0 20px;
+            flex-shrink: 0;
+            background: #141414;
+            border: 1px solid #222;
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .marquee-img-box {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .marquee-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .marquee-item:hover .marquee-img-box img {
+            transform: scale(1.05);
+        }
+
+        .marquee-item-details h4 {
+            font-size: 1rem;
+            margin: 10px 0 5px 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-item-details p {
+            color: #bfa15f;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .small-btn {
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
         /* --- RESPONSIVE MEDIA QUERIES --- */
         @media (max-width: 1024px) {
             .product-grid {
@@ -896,7 +951,8 @@
             }
 
             .hero h1,
-            .hero1 h1 {
+            .hero1 h1,
+            .hero2 h1 {
                 font-size: 2.8rem;
             }
         }
@@ -929,7 +985,6 @@
                 font-size: 2.4rem;
             }
 
-            /* Stack structural blocks inside mobile view ports */
             .luxury-editorial-card,
             .luxury-editorial-card.reverse {
                 flex-direction: column;
@@ -953,11 +1008,13 @@
             .editorial-collection-stack {
                 gap: 80px;
             }
-            .hero1-bg {
-            width: 160%;
-            height: 100%;
-            transform: scale(1.5);
-        }
+
+            .hero1-bg,
+            .hero2-bg {
+                width: 150%;
+                height: 100%;
+                transform: scale(1.5);
+            }
         }
     </style>
 </head>
@@ -1012,7 +1069,7 @@
             <div class="luxury-editorial-text">
                 <span class="luxury-meta" id="lux-meta">Atelier Custom Fabric</span>
                 <h2 id="lux-title">Uncompromising<br>Luxury Quality</h2>
-                <p id="lux-p">Crafted using 
+                <p id="lux-p">Crafted using
                     250+GSM heavy premium cotton fibers, each silhouette is tailored meticulously
                     to represent modern luxury street fashion. Clean cuts meets heavy drapery.</p>
                 <a href="#shop" class="cta-btn" id="lux-btn"
@@ -1036,44 +1093,6 @@
         </div>
         <div class="editorial-collection-stack" id="product-grid-extended"></div>
     </section>
-
-    <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
-
-    <div class="cart-panel" id="cart-panel">
-        <div class="cart-header">
-            <h2>Navigation</h2>
-            <button class="close-cart" onclick="closeCart()">✕</button>
-        </div>
-
-
-
-        <nav class="drawer-menu">
-            <ul class="drawer-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html" onclick="closeCart()">Our Story</a></li>
-
-                <li class="has-submenu">
-                    <button class="submenu-toggle-btn" onclick="toggleSubmenu(event)">
-                        Explore Collection <span class="arrow">▼</span>
-                    </button>
-                    <ul class="submenu" id="explore-submenu">
-                        <li><a href="shop.webp">Product Collection Demo</a></li>
-                        <li><a href="bag.webp">Bag Collection</a></li>
-
-                        <li><a href="https://forhad2008.github.io/shoes/">Shoes Collection</a></li>
-                        <li><a href="https://forhad2008.github.io/winter/">Winter Fashion</a></li>
-                                                <li><a href="https://forhad2008.github.io/watch/">Watch Collection</a></li>
-
-                    </ul>
-                </li>
-                <li><a href="https://forhad2008.github.io/Boraldo/page1.html">Explore T-shirts</a></li>
-                
-                <br> <br> <br>
-                <li><a href="https://www.facebook.com/profile.php?id=61580779565120" onclick="closeCart()">The Founder</a></li>
-                <li><a href="https://forhad2008.github.io/portfolio/" onclick="closeCart()">About The Founder</a></li>
-            </ul>
-        </nav>
-    </div>
 
     <div class="cart-modal-overlay" id="cartModal" onclick="closeCartModalOutside(event)">
         <div class="cart-modal-content">
@@ -1108,29 +1127,84 @@
             <div class="reveal-wrapper">
                 <h1 id="hero1-title">The Popular Drop</h1>
             </div>
-            <p id="hero1-subtitle">Premium aesthetics designed for timeless modern street-fashion.</p>
+            <p id="hero1-subtitle">Premium aesthetics designed for timeless modern Luxury-fashion.</p>
             <a href="https://forhad2008.github.io/shoes/" class="cta-btn" id="hero1-btn">Explore Shoes</a>
         </div>
     </section>
+
+    <section class="watch-marquee-section">
+        <div class="marquee-wrapper">
+            <div class="marquee-track" id="watch-marquee-track"></div>
+        </div>
+    </section>
+
+    <section class="hero2">
+        <div class="hero-bg-wrapper" id="hero2-img-wrapper">
+            <div class="hero2-bg" id="hero2-img"></div>
+        </div>
+        <div class="hero-content">
+            <div class="reveal-wrapper">
+                <h1 id="hero2-title">The Luxury Drop</h1>
+            </div>
+            <p id="hero2-subtitle">Premium aesthetics designed for timeless modern Luxury-fashion.</p>
+            <a href="https://forhad2008.github.io/watch/" class="cta-btn" id="hero2-btn">Explore Watch</a>
+        </div>
+    </section>
+
+    <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+
+    <div class="cart-panel" id="cart-panel">
+        <div class="cart-header">
+            <h2>Navigation (<span id="cartCountHeader">0</span>)</h2>
+            <button class="close-cart" onclick="closeCart()">✕</button>
+        </div>
+
+        <nav class="drawer-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" onclick="closeCart()">Our Story</a></li>
+
+                <li class="has-submenu">
+                    <button class="submenu-toggle-btn" onclick="toggleSubmenu(event)">
+                        Explore Collection <span class="arrow">▼</span>
+                    </button>
+                    <ul class="submenu" id="explore-submenu">
+                        <li><a href="shop.webp">Product Collection Demo</a></li>
+                        <li><a href="bag.webp">Bag Collection</a></li>
+                        <li><a href="https://forhad2008.github.io/shoes/">Shoes Collection</a></li>
+                        <li><a href="https://forhad2008.github.io/winter/">Winter Fashion</a></li>
+                        <li><a href="https://forhad2008.github.io/watch/">Watch Collection</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://forhad2008.github.io/Boraldo/page1.html">Explore T-shirts</a></li>
+
+                <br> <br> <br>
+                <li><a href="https://www.facebook.com/profile.php?id=61580779565120" onclick="closeCart()">The
+                        Founder</a></li>
+                <li><a href="https://forhad2008.github.io/portfolio/" onclick="closeCart()">About The Founder</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <script>
         const products = [
             { id: "prod-01", title: "Streetwear Tee with Abstract design", price: 299.00, badge: "Best Selling", image: "tee.jpg", link: "tee.jpg" },
             { id: "prod-02", title: "Streetwear Tee with Cool design", price: 399.99, badge: "Stylish", image: "tee.png", link: "tee.png" },
-            { id: "prod-03", title: "Streetwear Tee with Classic design", price: 289, badge: "Classic", image: "tee2.png", link: "tee2.png" },
+            { id: "prod-03", title: "Streetwear Tee with Classic design", price: 289.00, badge: "Classic", image: "tee2.png", link: "tee2.png" },
             { id: "prod-04", title: "Streetwear Tee with Creative design", price: 409.99, badge: "Premium", image: "tee8.png", link: "tee8.png" },
-            // New luxury drop additions
-            { id: "prod-05", title: "Boraldo Tee Model-16(The Water Motivation)", price: 400, badge: "Limited Drop", image: "16.png", link: "16.png" },
+            { id: "prod-05", title: "Boraldo Tee Model-16(The Water Motivation)", price: 400.00, badge: "Limited Drop", image: "16.png", link: "16.png" },
             { id: "prod-06", title: "Boraldo Tee Model-74(Creative Art V-1)", price: 399.99, badge: "Exclusive", image: "tee7.png", link: "tee7.png" },
-            { id: "prod-07", title: "Boraldo Tee Model-58(Professional)", price: 400, badge: "Professional", image: "tee5.jpg", link: "tee5.jpg" }
+            { id: "prod-07", title: "Boraldo Tee Model-58(Professional)", price: 400.00, badge: "Professional", image: "tee5.jpg", link: "tee5.jpg" },
+            { id: "prod-08", title: "Boraldo Panda Edition Luxury Watch", price: 7000.00, badge: "Best Selling", image: "1.png", link: "1.png" },
+            { id: "prod-09", title: "Boraldo Moon Edition Luxury Watch", price: 7999.99, badge: "Classic", image: "2.png", link: "2.png" },
+            { id: "prod-10", title: "Boraldo Penguin Edition Luxury Watch", price: 8250.00, badge: "Exclusive", image: "3.png", link: "3.png" },
+            { id: "prod-11", title: "Boraldo Jangle Edition Luxury Watch", price: 12750.00, badge: "Premium", image: "4.1.png", link: "4.1.png" },
         ];
 
         let cart = JSON.parse(localStorage.getItem('threadlab_cart')) || [];
 
-        // Dynamic view logic depending on the group target parameter
         function renderProductGrid(items, isLuxuryStyle = false) {
             if (!isLuxuryStyle) {
-                // Return Standard Cards Grid Style layout markup 
                 return items.map(p => `
                     <div class="product-card">
                         <div class="image-container">
@@ -1144,7 +1218,6 @@
                     </div>
                 `).join('');
             } else {
-                // Return Alternating Premium Editorial Layout markup
                 return items.map((p, index) => `
                     <div class="luxury-editorial-card ${index % 2 === 1 ? 'reverse' : ''}">
                         <div class="lux-card-image-wrapper">
@@ -1162,15 +1235,34 @@
             }
         }
 
+        function renderMarqueeItems(items) {
+            return items.map(p => `
+                <div class="marquee-item">
+                    <div class="marquee-img-box">
+                        ${p.badge ? `<div class="badge">${p.badge}</div>` : ''}
+                        <a href="${p.link}"><img src="${p.image}" alt="${p.title}"></a>
+                    </div>
+                    <div class="marquee-item-details">
+                        <h4>${p.title}</h4>
+                        <p>$${p.price.toFixed(2)}</p>
+                        <button class="lux-add-btn small-btn" onclick="addToCart('${p.id}')">Acquire</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
         function initProducts() {
             const grid1 = document.getElementById('product-grid');
             const grid2 = document.getElementById('product-grid-extended');
+            const watchTrack = document.getElementById('watch-marquee-track');
 
-            if (grid1) {
-                grid1.innerHTML = renderProductGrid(products.slice(0, 4), false);
-            }
-            if (grid2) {
-                grid2.innerHTML = renderProductGrid(products.slice(4), true);
+            if (grid1) grid1.innerHTML = renderProductGrid(products.slice(0, 4), false);
+            if (grid2) grid2.innerHTML = renderProductGrid(products.slice(4, 7), true);
+
+            if (watchTrack) {
+                const watchItems = products.slice(7, 11);
+                const marqueeHTML = renderMarqueeItems(watchItems);
+                watchTrack.innerHTML = marqueeHTML + marqueeHTML;
             }
         }
 
@@ -1190,20 +1282,14 @@
             }
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            initProducts();
-            updateCartUI();
-        });
-
         function toggleSubmenu(event) {
-                event.preventDefault();
-                const btn = event.currentTarget;
-                const submenu = document.getElementById('explore-submenu');
+            event.preventDefault();
+            const btn = event.currentTarget;
+            const submenu = document.getElementById('explore-submenu');
+            btn.classList.toggle('active');
+            submenu.classList.toggle('open');
+        }
 
-                // Toggle active state classes
-                btn.classList.toggle('active');
-                submenu.classList.toggle('open');
-            }
         function openCartModal() {
             closeCart();
             document.getElementById('cartModal').style.display = 'flex';
@@ -1222,9 +1308,8 @@
         }
 
         function updateCartUI() {
-            document.getElementById('cartCountHeader').innerText = cart.length;
-            const drawerCount = document.getElementById('drawerCartCount');
-            if (drawerCount) drawerCount.innerText = cart.length;
+            const headerCount = document.getElementById('cartCountHeader');
+            if (headerCount) headerCount.innerText = cart.length;
 
             const listContainer = document.getElementById('cartItemList');
             const totalContainer = document.getElementById('cartTotalPrice');
@@ -1242,8 +1327,8 @@
                     listContainer.innerHTML += `
                         <div class="cart-item">
                             <div class="cart-item-info">
-                                <strong>${item.name || item.title}</strong> <br>
-                                <small>Size: ${item.size || 'M'} | Color: ${item.color || 'Default'}</small>
+                                <strong>${item.title}</strong> <br>
+                                <small>Size: ${item.size} | Color: ${item.color}</small>
                             </div>
                             <div class="cart-item-actions">
                                 <span>$${item.price.toFixed(2)}</span>
@@ -1253,7 +1338,7 @@
                     `;
                 });
             }
-            totalContainer.innerText = `$${totalPrice.toFixed(2)}`;
+            if (totalContainer) totalContainer.innerText = `$${totalPrice.toFixed(2)}`;
         }
 
         function removeFromCart(index) {
@@ -1278,10 +1363,13 @@
             gsap.to("#cart-panel", { x: '100%', duration: 0.6, ease: "power4.inOut" });
         }
 
-        // --- GSAP ANIMATIONS ---
+        // --- GSAP ANIMATIONS CONTROLLER ---
         gsap.registerPlugin(ScrollTrigger);
 
         window.addEventListener('DOMContentLoaded', () => {
+            initProducts();
+            updateCartUI();
+
             // Main Entrance Landing Animation
             const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
             tl.to("#hero-img", { scale: 1, duration: 2 })
@@ -1289,6 +1377,14 @@
                 .from("#hero-title", { yPercent: 100, duration: 1.4 }, "-=1")
                 .to("#hero-subtitle", { opacity: 1, y: 0, duration: 1 }, "-=0.8")
                 .to("#hero-btn", { opacity: 1, y: 0, duration: 1 }, "-=0.8");
+
+            // Infinite Horizontal Scrolling Marquee Loop for Watches (Right to Left)
+            gsap.to("#watch-marquee-track", {
+                xPercent: -50,
+                ease: "none",
+                duration: 20,
+                repeat: -1
+            });
 
             // Standard Collection Row entry stagger animation
             gsap.to("#product-grid .product-card", {
@@ -1310,7 +1406,7 @@
                 onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, duration: 1.2, stagger: 0.2, ease: "power3.out" })
             });
 
-            // --- LUXURY SECTION INTERACTIVE ANIMATIONS ---
+            // Parallax Fluid Background Effects
             gsap.to("#luxury-fluid-bg", {
                 yPercent: 15,
                 scrollTrigger: {
@@ -1396,6 +1492,51 @@
                 ease: "power4.out",
                 scrollTrigger: {
                     trigger: ".hero1",
+                    start: "top 55%",
+                    toggleActions: "play none none none"
+                }
+            });
+
+            // --- HERO 2 REVEAL ANIMATIONS (Matching Hero 1 Structure) ---
+            gsap.to("#hero2-img-wrapper", {
+                opacity: 1,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: ".hero2",
+                    start: "top 75%",
+                    toggleActions: "play none none none"
+                }
+            });
+
+            gsap.to("#hero2-img", {
+                scale: 1,
+                scrollTrigger: {
+                    trigger: ".hero2",
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+
+            gsap.from("#hero2-title", {
+                yPercent: 100,
+                duration: 1.4,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: ".hero2",
+                    start: "top 60%",
+                    toggleActions: "play none none none"
+                }
+            });
+
+            gsap.to(["#hero2-subtitle", "#hero2-btn"], {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                stagger: 0.2,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: ".hero2",
                     start: "top 55%",
                     toggleActions: "play none none none"
                 }
